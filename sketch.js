@@ -12,6 +12,8 @@ var gameState = "onSling";
 
 function preload() {
     backgroundImg = loadImage("sprites/bg.png");
+    getTime();
+
 }
 
 function setup(){
@@ -85,4 +87,18 @@ function keyPressed(){
     if(keyCode === 32){
        // slingshot.attach(bird.body);
     }
+}
+
+async function getTime(){
+
+    var response=await fetch("http://worldtimeapi.org/api/timezone/America/Araguaina")
+    var data=await response.json()
+    console.log(data)
+
+    var DateTime=data.datetime;
+    console.log(DateTime)
+  var hour=DateTime.slice(11,13)
+  console.log(hour)
+  var month=DateTime.slice(5,7)
+console.log(month)
 }
